@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Запись на услугу — Москва</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/booking.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <p class="header__badge">г. Москва</p>
+        <h1 class="header__title">Запись на услугу</h1>
+        <p class="header__subtitle">
+          Работаем ежедневно с 9:00 до 21:00 (МСК), без выходных. Два мастера —
+          Ангелина и Вероника. Заполните форму — время подбирается с учётом
+          длительности услуги.
+        </p>
+      </header>
+
+      <main class="card" id="booking-form-block">
+        <form class="form" id="booking-form" novalidate>
+          <div class="field">
+            <label class="label" for="service">Услуга</label>
+            <select class="input input--select" id="service" name="service" required>
+              <option value="" disabled selected>Выберите услугу</option>
+            </select>
+            <p class="hint" id="service-duration-hint" hidden></p>
+            <p class="error" id="service-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="master">Мастер</label>
+            <select class="input input--select" id="master" name="master" required>
+              <option value="" disabled selected>Выберите мастера</option>
+            </select>
+            <p class="hint" id="master-hint">
+              Два мастера — выберите того, к кому хотите записаться.
+            </p>
+            <p class="error" id="master-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="date">Дата</label>
+            <select class="input input--select" id="date" name="date" required></select>
+            <p class="error" id="date-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="time">Время начала</label>
+            <select class="input input--select" id="time" name="time" required>
+              <option value="" disabled selected>Сначала выберите услугу и дату</option>
+            </select>
+            <p class="hint" id="time-hint" hidden></p>
+            <p class="error" id="time-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field field--row">
+            <div class="field field--half">
+              <label class="label" for="name">Имя</label>
+              <input
+                class="input"
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="given-name"
+                placeholder="Как к вам обращаться"
+                maxlength="80"
+                required
+              />
+              <p class="error" id="name-error" role="alert" hidden></p>
+            </div>
+            <div class="field field--half">
+              <label class="label" for="phone">Телефон</label>
+              <input
+                class="input"
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+7 (___) ___-__-__"
+                required
+              />
+              <p class="error" id="phone-error" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="estimate" id="estimate" aria-live="polite">
+            <div class="estimate__row">
+              <span class="estimate__label">Предварительная стоимость</span>
+              <span class="estimate__value" id="estimate-price">—</span>
+            </div>
+            <p class="estimate__note" id="estimate-note" hidden></p>
+          </div>
+
+          <button type="submit" class="btn btn--primary" id="submit-btn">
+            Подтвердить запись
+          </button>
+        </form>
+      </main>
+
+      <section class="card card--success" id="success-block" hidden>
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2 class="success-title">Запись принята</h2>
+        <p class="success-text" id="success-text"></p>
+        <button type="button" class="btn btn--secondary" id="new-booking-btn">
+          Новая запись
+        </button>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Демо-версия (V1): данные не отправляются на сервер. Время и цены —
+          пример для интерфейса.
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="js/booking.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+Корень проекта (Windows):
+C:\Users\New\.cursor\cursor-test
+
+V1 — запись (исходная версия):
+file:///C:/Users/New/.cursor/cursor-test/index.html
+
+V2 — шаг 5 мин, занятость по мастерам, ФИО, согласие 152-ФЗ:
+file:///C:/Users/New/.cursor/cursor-test/v2/index.html

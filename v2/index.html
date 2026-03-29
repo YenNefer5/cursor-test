@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Запись на услугу (V2) — Москва</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="booking-v2.css" />
+  </head>
+  <body>
+    <div class="page">
+      <p class="nav-versions">
+        <a href="../index.html">← Версия 1 (без учёта занятости мастеров)</a>
+      </p>
+
+      <header class="header">
+        <p class="header__badge">г. Москва · V2</p>
+        <h1 class="header__title">Запись на услугу</h1>
+        <p class="header__subtitle">
+          Работаем ежедневно с 9:00 до 21:00 (МСК), без выходных. Два мастера —
+          Ангелина и Вероника. Одинаковое время можно выбрать у разных мастеров,
+          если у них нет пересечения с уже занятыми интервалами (учёт хранится в
+          браузере для демо).
+        </p>
+      </header>
+
+      <main class="card" id="booking-form-block">
+        <form class="form" id="booking-form" novalidate>
+          <div class="field">
+            <label class="label" for="service">Услуга</label>
+            <select class="input input--select" id="service" name="service" required>
+              <option value="" disabled selected>Выберите услугу</option>
+            </select>
+            <p class="hint" id="service-duration-hint" hidden></p>
+            <p class="error" id="service-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="master">Мастер</label>
+            <select class="input input--select" id="master" name="master" required>
+              <option value="" disabled selected>Выберите мастера</option>
+            </select>
+            <p class="hint" id="master-hint">
+              Сначала выберите мастера — список времени зависит от его занятости.
+            </p>
+            <p class="error" id="master-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="date">Дата</label>
+            <select class="input input--select" id="date" name="date" required></select>
+            <p class="error" id="date-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="time">Время начала</label>
+            <select class="input input--select" id="time" name="time" required>
+              <option value="" disabled selected>Выберите услугу, мастера и дату</option>
+            </select>
+            <p class="hint" id="time-hint" hidden></p>
+            <p class="error" id="time-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field field--row">
+            <div class="field field--half">
+              <label class="label" for="first-name">Имя</label>
+              <input
+                class="input"
+                type="text"
+                id="first-name"
+                name="firstName"
+                autocomplete="given-name"
+                placeholder="Иван"
+                maxlength="60"
+                required
+              />
+              <p class="error" id="first-name-error" role="alert" hidden></p>
+            </div>
+            <div class="field field--half">
+              <label class="label" for="last-name">Фамилия</label>
+              <input
+                class="input"
+                type="text"
+                id="last-name"
+                name="lastName"
+                autocomplete="family-name"
+                placeholder="Иванов"
+                maxlength="60"
+                required
+              />
+              <p class="error" id="last-name-error" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="phone">Телефон</label>
+            <input
+              class="input"
+              type="tel"
+              id="phone"
+              name="phone"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="+7 (___) ___-__-__"
+              required
+            />
+            <p class="hint" id="phone-hint">Мобильный номер РФ: +7 и 10 цифр после него (начинается с 9).</p>
+            <p class="error" id="phone-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label class="consent" for="consent-pd">
+              <input
+                type="checkbox"
+                class="consent__input"
+                id="consent-pd"
+                name="consentPd"
+                value="1"
+              />
+              <span class="consent__text">
+                Я согласен(на) на обработку моих персональных данных (имя, фамилия,
+                телефон) в целях записи на услугу и связи со мной, в соответствии с
+                Федеральным законом № 152-ФЗ «О персональных данных».
+              </span>
+            </label>
+            <p class="error" id="consent-error" role="alert" hidden></p>
+          </div>
+
+          <div class="estimate" id="estimate" aria-live="polite">
+            <div class="estimate__row">
+              <span class="estimate__label">Предварительная стоимость</span>
+              <span class="estimate__value" id="estimate-price">—</span>
+            </div>
+            <p class="estimate__note" id="estimate-note" hidden></p>
+          </div>
+
+          <button type="submit" class="btn btn--primary" id="submit-btn">
+            Подтвердить запись
+          </button>
+        </form>
+      </main>
+
+      <section class="card card--success" id="success-block" hidden>
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2 class="success-title">Запись принята</h2>
+        <p class="success-text" id="success-text"></p>
+        <button type="button" class="btn btn--secondary" id="new-booking-btn">
+          Новая запись
+        </button>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Версия V2: занятость мастеров сохраняется в браузере (localStorage) для
+          демонстрации. Данные на сервер не отправляются.
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="booking-v2.js"></script>
+  </body>
+</html>
