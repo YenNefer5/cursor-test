@@ -29,6 +29,8 @@ const SERVICES = [
 const MASTERS = [
   { id: "angelina", name: "Ангелина" },
   { id: "veronika", name: "Вероника" },
+  { id: "yuliya", name: "Юлия" },
+  { id: "ekaterina", name: "Екатерина" },
 ];
 
 const els = {
@@ -353,7 +355,7 @@ els.form.addEventListener("submit", (e) => {
 
   const master = getMasterById(els.master.value);
   if (!master) {
-    setError(els.masterError, true, "Выберите мастера — Ангелину или Веронику.");
+    setError(els.masterError, true, "Выберите мастера из списка.");
     hasError = true;
   } else {
     setError(els.masterError, false);
@@ -421,7 +423,8 @@ els.form.addEventListener("submit", (e) => {
 
   els.bookingBlock.hidden = true;
   els.successBlock.hidden = false;
-  els.form.reset();
+  els.name.value = "";
+  els.phone.value = "";
   populateDates();
   populateServices();
   populateMasters();
@@ -452,4 +455,8 @@ function init() {
   updateServiceHint();
 }
 
-init();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

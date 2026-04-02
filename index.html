@@ -18,8 +18,8 @@
         <p class="header__badge">г. Москва</p>
         <h1 class="header__title">Запись на услугу</h1>
         <p class="header__subtitle">
-          Работаем ежедневно с 9:00 до 21:00 (МСК), без выходных. Два мастера —
-          Ангелина и Вероника. Заполните форму — время подбирается с учётом
+          Работаем ежедневно с 9:00 до 21:00 (МСК), без выходных. Четыре мастера —
+          Ангелина, Вероника, Юлия и Екатерина. Заполните форму — время подбирается с учётом
           длительности услуги.
         </p>
       </header>
@@ -39,9 +39,13 @@
             <label class="label" for="master">Мастер</label>
             <select class="input input--select" id="master" name="master" required>
               <option value="" disabled selected>Выберите мастера</option>
+              <option value="angelina">Ангелина</option>
+              <option value="veronika">Вероника</option>
+              <option value="yuliya">Юлия</option>
+              <option value="ekaterina">Екатерина</option>
             </select>
             <p class="hint" id="master-hint">
-              Два мастера — выберите того, к кому хотите записаться.
+              Выберите мастера, к кому хотите записаться.
             </p>
             <p class="error" id="master-error" role="alert" hidden></p>
           </div>
@@ -123,6 +127,6 @@
       </footer>
     </div>
 
-    <script type="module" src="js/booking.js"></script>
+    <script src="js/booking.js"></script>
   </body>
 </html>
